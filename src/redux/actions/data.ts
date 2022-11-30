@@ -1,20 +1,11 @@
-import axios from 'axios'
-import { Dispatch } from 'redux'
-import {
-  FAIL,
-  CLEAR_ERRORS,
-  SUCCESS,
-  GET,
-  ADD,
-  EDIT,
-  DELETE,
-  GET_SIGNLE,
-} from '../constants/quotes'
+import axios from 'axios';
+import { Dispatch } from 'redux';
+import { ADD, CLEAR_ERRORS, DELETE, EDIT, FAIL, GET, GET_SIGNLE, SUCCESS } from '../constants/data';
 
-import API_URL from '../../config'
-import { Data } from '../../interfaces'
+import API_URL from '../../config';
+import { Data } from '../../interfaces';
 
-export const getAllQuotes = () => async (dispatch: Dispatch) => {
+export const getAllData = () => async (dispatch: Dispatch) => {
   try {
     const result = await axios.get(`${API_URL}/api`)
     dispatch({ type: GET, payload: result.data })
@@ -28,7 +19,7 @@ export const getAllQuotes = () => async (dispatch: Dispatch) => {
   }
 }
 
-export const getQuote = (payload: Data) => async (dispatch: Dispatch) => {
+export const getSingleData = (payload: Data) => async (dispatch: Dispatch) => {
   try {
     const result = await axios.get(`${API_URL}/api/${payload.id}`)
     dispatch({ type: GET_SIGNLE, payload: result.data })
@@ -42,7 +33,7 @@ export const getQuote = (payload: Data) => async (dispatch: Dispatch) => {
   }
 }
 
-export const addQuote = (payload: Data) => async (dispatch: Dispatch) => {
+export const addData = (payload: Data) => async (dispatch: Dispatch) => {
   try {
     await axios.post(`${API_URL}/api`, payload)
     dispatch({ type: ADD, payload })
@@ -60,7 +51,7 @@ export const addQuote = (payload: Data) => async (dispatch: Dispatch) => {
   }
 }
 
-export const editQuote = (payload: Data) => async (dispatch: Dispatch) => {
+export const editData = (payload: Data) => async (dispatch: Dispatch) => {
   try {
     await axios.put(`${API_URL}/api/${payload.id}`, payload)
     dispatch({ type: EDIT, payload })
@@ -78,7 +69,7 @@ export const editQuote = (payload: Data) => async (dispatch: Dispatch) => {
   }
 }
 
-export const deleteQuote = (payload: Data) => async (dispatch: Dispatch) => {
+export const deleteData = (payload: Data) => async (dispatch: Dispatch) => {
   try {
     const result = await axios.delete(`${API_URL}/api/${payload.id}`)
     dispatch({ type: DELETE, payload })

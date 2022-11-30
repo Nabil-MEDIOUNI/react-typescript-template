@@ -3,3 +3,7 @@ export interface Data {
   quote: string
   author: string
 }
+
+export interface DataSelector {
+  data: Data[]
+}

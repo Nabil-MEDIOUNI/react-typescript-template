@@ -1,19 +1,9 @@
 import { Data } from '../../interfaces'
-import {
-  FAIL,
-  LOAD,
-  CLEAR_ERRORS,
-  SUCCESS,
-  GET,
-  ADD,
-  DELETE,
-  GET_SIGNLE,
-} from '../constants/quotes'
+import { ADD, CLEAR_ERRORS, DELETE, FAIL, GET, GET_SIGNLE, LOAD, SUCCESS } from '../constants/data'
 
 // initialstate
 const initialState = {
   data: [],
-  quote: {},
   errors: '',
   success: '',
   isLoad: false,
@@ -24,7 +14,7 @@ interface QuotesReducerInterface {
   payload: Data
 }
 
-const QuotesReducer = (state = initialState, { type, payload }: QuotesReducerInterface) => {
+const DataReducer = (state = initialState, { type, payload }: QuotesReducerInterface) => {
   switch (type) {
     case GET:
       return { ...state, data: payload, isLoad: false }
@@ -48,4 +38,4 @@ const QuotesReducer = (state = initialState, { type, payload }: QuotesReducerInt
   }
 }
 
-export default QuotesReducer
+export default DataReducer
