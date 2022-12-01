@@ -1,16 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
-import { Data, DataSelector } from './interfaces'
-import { getAllData } from './redux/actions/data'
-import { useTypedDispatch, useTypedSelector } from './redux/store'
+import { Data, DataSelector } from './interfaces';
+import { getAllData } from './redux/actions/data';
+import { useTypedDispatch, useTypedSelector } from './redux/store';
 
 function App() {
-  const dispatch = useTypedDispatch()
-  const { data }: DataSelector = useTypedSelector((state) => state.dataReducer)
+  const dispatch = useTypedDispatch();
+  const { data }: DataSelector = useTypedSelector((state) => state.dataReducer);
 
   useEffect(() => {
-    dispatch(getAllData())
-  }, [dispatch])
+    dispatch(getAllData());
+  }, [dispatch]);
 
   return (
     <div data-testid='screen-app' className='App'>
@@ -18,7 +18,7 @@ function App() {
         <div key={element.id} />
       ))}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
